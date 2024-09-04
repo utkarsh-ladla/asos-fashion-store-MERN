@@ -1,71 +1,51 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function LoginPage() {
- 
-  const navigate= useNavigate()
- 
-  
+  const navigate = useNavigate();
 
+  const [formState, setFormState] = useState({
+    Email: "",
+    Password: ""
+  });
 
-   const [FormState , setFormstate] = useState({
-    Email:"",
-    Password:""
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setFormState(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  }
 
-   })
-
-   console.log(FormState)
-
-
-   function handleChange(e){
-      const {name,value}=e.target
-      const newForm={
-        ...FormState,[name]:value
-      }
-      setFormstate(newForm)
-      
-   }
-  
-   function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-
     
-    
-    const storeEmail = JSON.parse(localStorage.getItem('Email'));
-    const storePassword = JSON.parse(localStorage.getItem("Password"));
-
-
     // Basic form validation
-    if (storeEmail===FormState.Email && storePassword===FormState.Password ) {
-      alert("Login Success")
-      navigate("/");
-      
-      
-      }
-  
-      else{
-      alert("Invalid email or password. Please try again");
-
+    if (!formState.Email || !formState.Password) {
+      alert("Please fill in all fields.");
+      return;
     }
 
-
-    
-    // More advanced form validation can be added here
-
-    // Storing email and password in local storage
-   
-    
-    
-    
-}
-
-
-  
-  
+    // POST request to server
+    axios.post('http://localhost:3001/login', formState)
+      .then(response => {
+        if (response.data === "success") {
+          alert("Login Success");
+          navigate("/");
+        } else {
+          alert("Invalid email or password. Please try again");
+        }
+      })
+      .catch(err => {
+        console.error("Axios Error:", err);
+        alert("An error occurred. Please try again later.");
+      });
+  }
 
   return (
-    <div className="h-screen flex justify-center items-center bg-gray-100 ">
-      <div className="max-w-md w-full bg-white rounded px-12 py-36 ">
+    <div className="h-screen flex justify-center items-center bg-gray-100">
+      <div className="max-w-md w-full bg-white rounded px-12 py-20 mb-4">
         <h2 className="text-3xl font-bold mb-4">Log In</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -76,10 +56,10 @@ export default function LoginPage() {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="email"
               type="email"
-              value={FormState.Email}
+              value={formState.Email}
               onChange={handleChange}
               placeholder="Enter your email"
-              name='Email'
+              name="Email"
             />
           </div>
           <div className="mb-4">
@@ -90,39 +70,31 @@ export default function LoginPage() {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="password"
               type="password"
-              value={FormState.Password}
+              value={formState.Password}
               onChange={handleChange}
               placeholder="Enter your password"
-              name='Password'
+              name="Password"
             />
           </div>
           <div className="flex items-center justify-between">
             <button
               className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"
-              >
+            >
               Log In
             </button>
-
-            <a
+            <Link
+              to="/forgot-password"
               className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-              href="#"
-              >
+            >
               Forgot password?
-            </a>
+            </Link>
           </div>
         </form>
-           
-           
         <p className="text-gray-600 text-sm mt-4">
           Don't have an account? <Link to="/signup" className="text-blue-500 hover:text-blue-800">Sign Up</Link>
         </p>
       </div>
-
-      
     </div>
-
-
-
   );
 }

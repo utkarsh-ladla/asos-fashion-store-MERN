@@ -10,6 +10,7 @@
     "preview": "vite preview",
     "serve": "json-server --watch db.json"
   },
+  
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.4",
