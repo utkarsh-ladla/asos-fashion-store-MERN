@@ -33,8 +33,8 @@ mongoose.connect("mongodb+srv://utkarshladla:Utkarsh%404660@cluster0.gegw5.mongo
 // for Login 
 app.post('/login', async (req, res) => {
   try {
-    const { email, Password } = req.body;
-    const user = await UsersModel.findOne({ email: email });
+    const { Email, Password } = req.body;
+    const user = await UsersModel.findOne({  email: Email });
 
     if (user) {
       if (user.Password === Password) {
@@ -45,6 +45,11 @@ app.post('/login', async (req, res) => {
     } else {
       res.status(404).json("No record exists");
     }
+  } catch (err) {
+    console.error("Server Error:", err);
+    res.status(500).json("Server error");
+  }
+});
 
 
 // API route for user registration
@@ -56,11 +61,6 @@ app.post('/register', (req, res) => {
       .catch(error => res.status(400).json({ error: 'Error registering user', details: error }));
 });
 
-// app.post('/resister',(req,res) => {
-//     UsersModel.create(req.body)
-//     .then(Users => res.json(Users))
-//     .catch(err => res.json(err))
-// })
 
 const PORT = process.env.PORT || 3001; // Change to an available port
 app.listen(PORT, () => {

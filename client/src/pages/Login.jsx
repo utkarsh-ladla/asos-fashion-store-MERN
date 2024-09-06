@@ -20,7 +20,7 @@ export default function LoginPage() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    
+
     // Basic form validation
     if (!formState.Email || !formState.Password) {
       alert("Please fill in all fields.");
@@ -31,6 +31,9 @@ export default function LoginPage() {
     axios.post('http://localhost:3001/login', formState)
       .then(response => {
         if (response.data === "success") {
+          // Store the login state in localStorage (or in sessionStorage)
+          localStorage.setItem('isLoggedIn', true);
+          localStorage.setItem('userEmail', formState.Email);
           alert("Login Success");
           navigate("/");
         } else {
