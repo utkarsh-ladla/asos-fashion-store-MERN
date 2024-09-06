@@ -45,11 +45,6 @@ app.post('/login', async (req, res) => {
     } else {
       res.status(404).json("No record exists");
     }
-  } catch (err) {
-    console.error("Server Error:", err);
-    res.status(500).json("Server error");
-  }
-});
 
 
 // API route for user registration
