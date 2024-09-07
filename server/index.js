@@ -24,6 +24,10 @@ mongoose.connect("mongodb+srv://utkarshladla:Utkarsh%404660@cluster0.gegw5.mongo
 .catch(err => console.error("MongoDB connection error:", err.message)
 );
 
+app.get("/", (req, res) => {
+  res.json("Hello");
+})
+
 // for Login 
 app.post('/login', async (req, res) => {
   try {
