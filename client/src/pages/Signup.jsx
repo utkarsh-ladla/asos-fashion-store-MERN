@@ -14,6 +14,7 @@ export default function Signup() {
     ConfirmPassword: "",
   });
 
+  axios.defaults.withCredentials = true;
   // Handle form input changes
   function handleChange(e) {
     const { name, value } = e.target;
