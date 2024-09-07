@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(cors(
   {
-    origin: ["asos-fashion-store-mern-server.vercel.app"],
+    origin: ["asos-fashion-store-mern.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true
   }
