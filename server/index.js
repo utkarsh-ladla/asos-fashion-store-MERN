@@ -1,17 +1,3 @@
-// const express = require("express")
-// const mongoose = require("mongoose")
-// const cors = require("cors")
-
-// const app = express()
-// app.use(express.json())   //transerfer from front to backend in json formate
-// app.use(cors())
-
-// //creating connection with mongoose
-// mongoose.connect("mongodb+srv://utkarshladla:Utkarsh%404660@cluster0.gegw5.mongodb.net/")
-
-// app.listen(3001, () => {
-//     console.log("server is running ")
-// })
 
 
 const express = require("express");
@@ -21,7 +7,15 @@ const UsersModel =require('./models/User')
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+  {
+    origin: ["asos-fashion-store-mern-server.vercel.app"],
+    methods: ["POST", "GET"],
+    credentials: true
+  }
+
+));
+
 
 
 // Creating connection with mongoose
