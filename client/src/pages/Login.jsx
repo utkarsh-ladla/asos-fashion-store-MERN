@@ -17,7 +17,7 @@ export default function LoginPage() {
       [name]: value
     }));
   }
-
+  axios.defaults.withCredentials = true;
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -26,9 +26,9 @@ export default function LoginPage() {
       alert("Please fill in all fields.");
       return;
     }
-
+    
     // POST request to server
-    axios.post('http://localhost:3001/login', formState)
+    axios.post('asos-fashion-store-mern-server.vercel.app/login', formState)
       .then(response => {
         if (response.data === "success") {
           // Store the login state in localStorage (or in sessionStorage)
