@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+axios.defaults.withCredentials = true;
 export default function LoginPage() {
   const navigate = useNavigate();
 
@@ -17,7 +17,7 @@ export default function LoginPage() {
       [name]: value
     }));
   }
-  axios.defaults.withCredentials = true;
+  
   function handleSubmit(e) {
     e.preventDefault();
     
@@ -26,7 +26,6 @@ export default function LoginPage() {
       alert("Please fill in all fields.");
       return;
     }
-    axios.defaults.withCredentials = true;
     // POST request to server
     axios.post('https://asos-fashion-store-mern-server.vercel.app/login', formState)
       .then(response => {

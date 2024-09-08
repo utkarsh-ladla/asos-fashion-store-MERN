@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
+axios.defaults.withCredentials = true;
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -14,7 +15,6 @@ export default function Signup() {
     ConfirmPassword: "",
   });
 
-  axios.defaults.withCredentials = true;
   // Handle form input changes
   function handleChange(e) {
     const { name, value } = e.target;
@@ -23,7 +23,7 @@ export default function Signup() {
       [name]: value,
     });
   }
-  axios.defaults.withCredentials = true;
+
   // Handle form submission
   function handleSubmit(e) {
     e.preventDefault();
