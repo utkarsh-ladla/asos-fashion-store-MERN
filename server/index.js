@@ -7,14 +7,18 @@ const UsersModel =require('./models/User')
 
 const app = express();
 app.use(express.json());
+
 app.use(cors(
   {
     origin: ["https://asos-fashion-store-mern.vercel.app"],
     methods: ["POST", "GET"],
-    credentials: true
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
   }
-
+  
 ));
+app.use(cors(corsOptions));
+app.options('*', cors()); // Handle preflight requests for all routes
 
 
 
