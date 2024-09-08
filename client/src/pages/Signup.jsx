@@ -23,7 +23,7 @@ export default function Signup() {
       [name]: value,
     });
   }
-
+  axios.defaults.withCredentials = true;
   // Handle form submission
   function handleSubmit(e) {
     e.preventDefault();

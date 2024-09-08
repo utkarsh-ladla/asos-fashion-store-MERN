@@ -17,7 +17,7 @@ export default function LoginPage() {
       [name]: value
     }));
   }
-  // axios.defaults.withCredentials = true;
+  axios.defaults.withCredentials = true;
   function handleSubmit(e) {
     e.preventDefault();
     
