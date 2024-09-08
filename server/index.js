@@ -1,5 +1,3 @@
-
-
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -10,12 +8,10 @@ const app = express();
 app.use(express.json())
 // app.use(cors(corsOptions));
 
-app.use(cors(
-  {
-    origin: "https://asos-fashion-store-mern.vercel.app",
+app.use(cors({
+    origin: "asos-fashion-store-mern.vercel.app",
     methods: ["POST", "GET"],
-    credentials: true,
-
+    credentials: true
   }
   
 ));
