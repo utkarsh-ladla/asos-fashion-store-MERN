@@ -13,9 +13,9 @@ app.use(cors(corsOptions));
 app.use(cors(
   {
     origin: "https://asos-fashion-store-mern.vercel.app",
-    methods: ["POST", "GET"],
-    credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization"],
+    // methods: ["POST", "GET"],
+    // credentials: true,
+    // allowedHeaders: ["Content-Type", "Authorization"],
   }
   
 ));

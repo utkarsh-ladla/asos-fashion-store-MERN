@@ -26,7 +26,7 @@ export default function LoginPage() {
       alert("Please fill in all fields.");
       return;
     }
-    axios.defaults.withCredentials = true;
+    // axios.defaults.withCredentials = true;
     // POST request to server
     axios.post('https://asos-fashion-store-mern-server.vercel.app/login', formState)
       .then(response => {
