@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-axios.defaults.withCredentials = true;
+
 export default function LoginPage() {
   const navigate = useNavigate();
 
@@ -9,7 +9,7 @@ export default function LoginPage() {
     Email: "",
     Password: ""
   });
-
+  axios.defaults.withCredentials = true;
   function handleChange(e) {
     const { name, value } = e.target;
     setFormState(prevState => ({
@@ -27,11 +27,7 @@ export default function LoginPage() {
       return;
     }
     // POST request to server
-    axios.post('https://asos-fashion-store-mern-server.vercel.app/Login', formState, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+    axios.post('https://asos-fashion-store-mern-server.vercel.app/login', formState)
       .then(response => {
         if (response.data === "success") {
           // Store the login state in localStorage (or in sessionStorage)

@@ -31,11 +31,11 @@ app.get("/", (req, res) => {
 })
 
 // for Login 
-app.post('/Login', async (req, res) => {
+app.post('/login', (req, res) => {
   console.log("Login route hit, request body:", req.body);
   try {
     const { Email, Password } = req.body;
-    const user = await UsersModel.findOne({  email: Email });
+    const user = UsersModel.findOne({  email: Email });
 
     if (user) {
       if (user.Password === Password) {
