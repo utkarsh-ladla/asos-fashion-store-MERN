@@ -27,8 +27,12 @@ export default function LoginPage() {
       return;
     }
     // POST request to server
-    axios.post('https://asos-fashion-store-mern-server.vercel.app/login', formState)
-      .then(response => {
+    axios.post('https://asos-fashion-store-mern-server.vercel.app/login', formState ,{
+    headers: {
+      'Content-Type': 'application/json'
+    } 
+  })
+    .then(response => {
         if (response.data === "success") {
           // Store the login state in localStorage (or in sessionStorage)
           localStorage.setItem('isLoggedIn', true);

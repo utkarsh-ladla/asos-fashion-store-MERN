@@ -32,6 +32,7 @@ app.get("/", (req, res) => {
 
 // for Login 
 app.post('/login', async (req, res) => {
+  console.log("Login route hit, request body:", req.body);
   try {
     const { Email, Password } = req.body;
     const user = await UsersModel.findOne({  email: Email });
