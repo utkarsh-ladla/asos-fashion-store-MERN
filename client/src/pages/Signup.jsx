@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -40,7 +40,7 @@ export default function Signup() {
     }
 
     // Make POST request to the server
-    axios.post('https://asos-fashion-store-mern-server.vercel.app/register', {
+    axios.post('http://localhost:3001/register', {
       name: FormState.Name,
       email: FormState.Email,
       Password: FormState.Password

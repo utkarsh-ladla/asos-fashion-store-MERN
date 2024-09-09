@@ -3,39 +3,36 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const UsersModel =require('./models/User') 
 
+
 const app = express();
-// app.use(express.json());
-app.use(express.json())
-// app.use(cors(corsOptions));
+app.use(express.json());
 
-app.use(cors({
-  origin: ["https://asos-fashion-store-mern.vercel.app"],
-  methods: ["GET", "POST", "PUT","DELETE","PATCH","OPTIONS"],
-  credentials: true
-}
+const corsOptions = {
+  origin: 'https://asos-fashion-store-mern.vercel.app', // Allow only localhost for local testing
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  credentials: true, // Allow credentials
+};
 
-));
-app.options('*', cors()); // Handle preflight requests for all routes
-
+app.use(cors(corsOptions));
 
 
 // Creating connection with mongoose
-// mongoose.connect("mongodb+srv://utkarshladla:Utkarsh%404660@cluster0.gegw5.mongodb.net/asos")
-mongoose.connect("mongodb+srv://utkarshladla:Utkarsh%404660@cluster0.gegw5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+mongoose.connect("mongodb+srv://utkarshladla:Utkarsh%404660@cluster0.gegw5.mongodb.net/asos")
+// mongoose.connect("mongodb+srv://utkarshladla:Utkarsh%404660@cluster0.gegw5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 .then(() => console.log("MongoDB connected successfully"))
 .catch(err => console.error("MongoDB connection error:", err.message)
 );
 
-app.get("/", (req, res) => {
-  res.json("Hello");
-})
+// app.get("/", (req, res) => {
+//   res.json("Hello");
+// })
 
 // for Login 
-app.post('/login', (req, res) => {
-  console.log("Login route hit, request body:", req.body);
+app.post('/login', async (req, res) => {
+  // console.log("Login route hit, request body:", req.body);
   try {
     const { Email, Password } = req.body;
-    const user = UsersModel.findOne({  email: Email });
+    const user = await UsersModel.findOne({  email: Email });
 
     if (user) {
       if (user.Password === Password) {
