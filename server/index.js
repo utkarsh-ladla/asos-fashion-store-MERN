@@ -23,9 +23,20 @@ mongoose.connect("mongodb+srv://utkarshladla:Utkarsh%404660@cluster0.gegw5.mongo
 .catch(err => console.error("MongoDB connection error:", err.message)
 );
 
-// app.get("/", (req, res) => {
-//   res.json("Hello");
-// })
+app.get("/", (req, res) => {
+  res.json("Hello");
+})
+
+const path = require('path');
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+// Catch-all handler to serve the React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
+
 
 // for Login 
 app.post('/login', async (req, res) => {
