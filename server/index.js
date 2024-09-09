@@ -10,6 +10,7 @@ app.use(express.json())
 
 app.use(cors({
   origin: ["https://asos-fashion-store-mern.vercel.app"],
+  methods: ["GET", "POST", "PUT","DELETE","PATCH","OPTIONS"],
   credentials: true
 }
 
