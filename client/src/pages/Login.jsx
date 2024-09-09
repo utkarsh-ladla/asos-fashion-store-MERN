@@ -17,22 +17,22 @@ export default function LoginPage() {
       [name]: value
     }));
   }
-  
+
   function handleSubmit(e) {
     e.preventDefault();
-    
+
     // Basic form validation
     if (!formState.Email || !formState.Password) {
       alert("Please fill in all fields.");
       return;
     }
     // POST request to server
-    axios.post('https://asos-fashion-store-mern-server.vercel.app/login', formState ,{
-    headers: {
-      'Content-Type': 'application/json'
-    } 
-  })
-    .then(response => {
+    axios.post('https://asos-fashion-store-mern-server.vercel.app/Login', formState, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => {
         if (response.data === "success") {
           // Store the login state in localStorage (or in sessionStorage)
           localStorage.setItem('isLoggedIn', true);

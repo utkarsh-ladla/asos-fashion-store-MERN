@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
 })
 
 // for Login 
-app.post('/login', async (req, res) => {
+app.post('/Login', async (req, res) => {
   console.log("Login route hit, request body:", req.body);
   try {
     const { Email, Password } = req.body;
