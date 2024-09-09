@@ -14,8 +14,7 @@
         "header": {
           "Access-Control-Allow-Origin":"*"
         }
-      },
-      { "src": "/(.*)", "dest": "/client/build/$1" }
+      }
      
     ]
   }
