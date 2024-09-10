@@ -10,14 +10,10 @@
       {
         "src": "/(.*)",
         "dest": "index.js",
-        "methods": ["POST", "GET","PUT","DELETE","PATCH","OPTIONS"]
-      }
-      
-    ],
-    "rewrites": [
-      {
-        "source": "/(.*)",
-        "destination": "/"
+        "methods": ["POST", "GET","PUT","DELETE","PATCH","OPTIONS"],
+        "header": {
+          "Access-Control-Allow-Origin":"*"
+        }
       }
     ]
   }
