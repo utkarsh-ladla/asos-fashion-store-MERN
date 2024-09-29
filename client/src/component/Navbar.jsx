@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import logo from "/logo.png"
 import { IoMdMenu } from "react-icons/io";
 import { FaTimes } from "react-icons/fa"
@@ -24,7 +24,30 @@ import { ClassNames } from "@emotion/react";
 
 export default function Navbar() {
 
-  const [Menu, setMenu] = useState(false)
+  const [Menu, setMenu] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
+  const [user, setUser] = useState(null); // Track user info
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Example of checking login status (you may need to adjust this according to your authentication logic)
+    const user = localStorage.getItem('user');
+    if (user) {
+      setIsLoggedIn(true);
+      setUser(JSON.parse(user));
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    // Clear user data from local storage or any other auth storage
+    localStorage.removeItem('user');
+    setIsLoggedIn(false);
+    setUser(null);
+    navigate('/login');
+  };
+
 
   const toggleMenu = () => {
     setMenu(!Menu)
@@ -202,24 +225,37 @@ export default function Navbar() {
                   <hr />
                   <PopoverArrow />
                   <PopoverBody>
-                    <Link to="/signup">
+                  {isLoggedIn ? (
+                    <>
+                      <div>Welcome, {user.name}</div>
                       <button
-                        className="bg-oran text-blue-500 underline font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                        type="submit"
+                        className="bg-red-500 text-white font-bold py-2 px-4 rounded mt-2"
+                        onClick={handleLogout}
                       >
-                        Sign Up
+                        Log Out
                       </button>
-                    </Link>
-                    <Link to='/login'>
-                      <button
-                        className="  text-blue-500 underline font-bold py-2 px-4 rounded focus:outline-none "
-                        type="submit"
-                      >
-                        Log In
-                      </button>
-                    </Link>
-
-                  </PopoverBody>
+                    </>
+                  ) : (
+                    <>
+                      <Link to="/signup">
+                        <button
+                          className="bg-oran text-blue-500 underline font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                          type="button"
+                        >
+                          Sign Up
+                        </button>
+                      </Link>
+                      <Link to='/login'>
+                        <button
+                          className="text-blue-500 underline font-bold py-2 px-4 rounded focus:outline-none"
+                          type="button"
+                        >
+                          Log In
+                        </button>
+                      </Link>
+                    </>
+                  )}
+                </PopoverBody>
                   <hr />
                   <PopoverFooter className=" font-semibold text-center">Click here 👆 </PopoverFooter>
                 </PopoverContent>

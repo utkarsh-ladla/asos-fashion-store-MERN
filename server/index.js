@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-  origin: 'hhttps://asos-fashion-store-mern.vercel.app', // Allow only localhost for local testing
+  origin: 'https://asos-fashion-store-mern.vercel.app/', // Allow only localhost for local testing
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   credentials: true, // Allow credentials
 };

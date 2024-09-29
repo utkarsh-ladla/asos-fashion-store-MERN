@@ -9,7 +9,7 @@ export default function LoginPage() {
     Email: "",
     Password: ""
   });
-  axios.defaults.withCredentials = true;
+  // axios.defaults.withCredentials = true;
   function handleChange(e) {
     const { name, value } = e.target;
     setFormState(prevState => ({

@@ -7,7 +7,7 @@ const Women = () => {
   return (
     <>
     <video autoplay loop muted className='mb-8 lg:w-[80%] lg:m-auto lg:mb-10 'controls autoPlay>
-      <source  src='https://video.asos-media.com/Navigation/_content_HP_DESKTOP_WW_Flash9_1440xAuto_5000K.mp4'/>
+      <source  src='https://www.asos-video.com/video/upload/f_auto,q_auto:best/WW%20-%20HOMEPAGE%202880%20X%201260_q5gxrw.mp4'/>
     </video>
 
 
