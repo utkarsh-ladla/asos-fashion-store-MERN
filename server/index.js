@@ -7,13 +7,31 @@ const UsersModel =require('./models/User')
 const app = express();
 app.use(express.json());
 
+// const corsOptions = {
+//   origin: 'https://asos-fashion-store-mern.vercel.app/', // Allow only localhost for local testing
+//   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+//   credentials: true, // Allow credentials
+// };
+// app.use(cors(corsOptions));
 const corsOptions = {
-  origin: 'https://asos-fashion-store-mern.vercel.app/', // Allow only localhost for local testing
-  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-  credentials: true, // Allow credentials
-};
+  origin: function (origin, callback) {
+    const allowedOrigins = [
+      'http://localhost:5173', // For local development
+      'https://asos-fashion-store-mern.vercel.app' // For production
+    ];
 
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  credentials: true,
+};
 app.use(cors(corsOptions));
+
 
 
 // Creating connection with mongoose
