@@ -10,6 +10,7 @@
     "preview": "vite preview",
     "serve": "json-server --watch db.json"
   },
+  "proxy":"https://asos-fashion-store-mern-server.vercel.app",
   
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
