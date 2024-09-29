@@ -2,10 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const UsersModel =require('./models/User') 
-
-
 const app = express();
-app.use(express.json());
 
 const corsOptions = {
   origin: 'https://asos-fashion-store-mern.vercel.app', // Allow only localhost for local testing
@@ -13,6 +10,8 @@ const corsOptions = {
   credentials: true, // Allow credentials
 };
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Allow preflight requests from any route
+app.use(express.json());
 
 
 
