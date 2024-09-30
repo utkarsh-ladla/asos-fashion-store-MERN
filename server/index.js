@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
-const UsersModel = require("./models/User");
+const UsersModel = require("./models/User"); // Ensure this path is correct
 
 const app = express();
 
@@ -12,10 +12,10 @@ const corsOptions = {
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   credentials: true,
 };
+
+// Enable CORS
 app.use(cors(corsOptions));
-
 app.options('*', cors(corsOptions)); // Allow preflight requests from any route
-
 
 // Body parsing middleware
 app.use(express.json());
