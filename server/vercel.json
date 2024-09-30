@@ -1,22 +1,8 @@
 {
-  "version":2,
-  "builds":[
-      {"src":"*.js","use":"@vercel/node"}
-  ],
-  "routes":[
-      {
-          "src":"/(.*)",
-          "dest":"/"
-      }
-  ],
-  "rewrites": [
-    {
-      "source": "/login",
-      "destination": "/api/login"
-    },
-    {
-      "source": "/register",
-      "destination": "/api/register"
-    }
-  ]
-}
+    "routes": [
+      { "src": "/api/login", "dest": "/api/login.js" },
+      { "src": "/api/register", "dest": "/api/register.js" },
+      { "src": "/(.*)", "dest": "/client/build/index.html" }
+    ]
+  }
+  
