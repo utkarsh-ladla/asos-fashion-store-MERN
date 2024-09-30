@@ -1,4 +1,3 @@
-// server/index.js
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -14,6 +13,9 @@ const corsOptions = {
   credentials: true,
 };
 app.use(cors(corsOptions));
+
+app.options('*', cors(corsOptions)); // Allow preflight requests from any route
+
 
 // Body parsing middleware
 app.use(express.json());
@@ -71,6 +73,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 });
 
+// Start the server
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
