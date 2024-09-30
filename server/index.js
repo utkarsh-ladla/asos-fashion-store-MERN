@@ -65,13 +65,6 @@ app.post('/api/register', async (req, res) => {
   }
 });
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, '../client/dist')));
-
-// Serve React app for all other routes
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
-});
 
 // Start the server
 const PORT = process.env.PORT || 3001;
