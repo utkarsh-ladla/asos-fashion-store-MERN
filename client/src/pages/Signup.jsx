@@ -40,7 +40,7 @@ export default function Signup() {
     }
 
     // Make POST request to the server
-    axios.post('https://asos-fashion-store-mern-server.vercel.app/register', {
+    axios.post('https://asos-fashion-store-mern-server.vercel.app/api/login', {
       name: FormState.Name,
       email: FormState.Email,
       Password: FormState.Password
