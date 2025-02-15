@@ -20,7 +20,7 @@ function CartPage() {
   };
 
   const calculateTotal = () => {
-    return calculateSubtotal() + 8.00; // 8.00 is the delivery fee
+    return calculateSubtotal() + 8.00; 
   };
 
   return (

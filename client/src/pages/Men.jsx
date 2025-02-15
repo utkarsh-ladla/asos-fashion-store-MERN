@@ -7,6 +7,7 @@ const Men = () => {
   
   <video autoplay loop muted className='mb-8 lg:w-[80%] lg:m-auto lg:mb-10 'controls autoPlay>
       {/* <source  src='https://video.asos-media.com/Navigation/_content_HP_DESKTOP_WW_Flash9_1440xAuto_5000K.mp4'/> */}
+      {/* <source  src='https://www.asos-video.com/video/upload/f_auto,q_auto:best/WW%20-%20HOMEPAGE%202880%20X%201260_q5gxrw.mp4'/> */}
       <source  src='https://www.asos-video.com/video/upload/f_auto,q_auto:best/WW%20-%20HOMEPAGE%202880%20X%201260_q5gxrw.mp4'/>
       
     </video>
@@ -98,7 +99,7 @@ const Men = () => {
         <div className='flex flex-col items-center justify-center gap-3 py-4 font-bold'>
 
 
-            {/* <p className='mb-4 ml-44'> */}
+            
                 <mark className='rounded-3xl bg-transparent border-2 border-black lg:py-1 lg:w-[16%] lg:text-center lg:text-2xl'>&nbsp;&nbsp;&nbsp;THE ASOS APP&nbsp;&nbsp;&nbsp;</mark>
             {/* </p> */}
             <p className='lg:text-3xl '>
@@ -106,7 +107,7 @@ const Men = () => {
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;App-solutely!
                 
             </p>
-            {/* <p className='mt-4 ml-[16.8%]'> */}
+            
                 <mark className='rounded-3xl bg-black text-white py-1  lg:w-[18%] lg:text-center lg:text-2xl'>&nbsp;&nbsp;DOWNLOAD NOW&nbsp;&nbsp;</mark>
             {/* </p> */}
 

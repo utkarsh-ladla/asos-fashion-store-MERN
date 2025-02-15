@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
-// axios.defaults.withCredentials = true;
+
 
 export default function Signup() {
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
-  // State to handle form input
   const [FormState, setFormstate] = useState({
     Name: "",
     Email: "",
@@ -56,74 +55,6 @@ export default function Signup() {
     });
   }
 
-
-// export default function Signup() {
-//   const navigate= useNavigate()
-//   const [error, setError] = useState("");
-
-
-//    const [FormState , setFormstate] = useState({
-//     Name:"",
-//     Email:"",
-//     Password:"",
-//     ConfirmPassword:"",
-
-//    })
-
-//    console.log(FormState)
-
-
-//    function handleChange(e){
-//       const {name,value}=e.target
-//       const newForm={
-//         ...FormState,[name]:value
-//       }
-//       setFormstate(newForm)
-//    }
-
-  
-//    function handleSubmit(e) {
-//     e.preventDefault();
-//     axios.post('',{name,email,Password})
-//     .then(result => console.log(result))
-//     .catch(err => console.log(err))
-    
-//     // // Basic form validation
-//     // if (!FormState.Email || !FormState.Password || !FormState.ConfirmPassword) {
-//     //   alert("Please fill in all fields.");
-//     //   return
-      
-//     //   }
-      
-      
-      
-//     //   // More advanced form validation can be added here
-      
-//     //   // Storing email and password in local storage
-//     //   localStorage.setItem('Name', JSON.stringify(FormState.Name));
-//     //   localStorage.setItem('Email', JSON.stringify(FormState.Email));
-//     //   localStorage.setItem('Password', JSON.stringify(FormState.Password));
-//     //   localStorage.setItem('ConfirmPassword', JSON.stringify(FormState.ConfirmPassword));
-      
-//     //   // Feedback to user upon successful signup
-      
-//     //   // history.push('/login');
-//     //   if(FormState.Password===FormState.ConfirmPassword){
-        
-//     //     alert("Signup successful!");
-//     //     // Optional: Redirect to login page
-//     //     navigate("/login")
-//     //     }
-//     //     else{
-
-//     //       alert("Wrong password! please enter the same password as above")
-//     //     }
-
-//       }
-
-
-  
-   
 
   return (
     <div className="h-screen flex justify-center items-center bg-gray-100">

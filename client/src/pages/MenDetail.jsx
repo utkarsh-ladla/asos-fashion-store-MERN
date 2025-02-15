@@ -27,7 +27,7 @@ useEffect(()=>{
     <div className="md:w-1/2">
       <div className="flex flex-col items-center">
         <img
-          src={product.img} // Replace with your main image URL
+          src={product.img} 
           alt="Product"
           className="w-[50%] h-[500px] mb-4"
         />

@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
-const UsersModel = require("./models/User"); // Ensure this path is correct
+const UsersModel = require("./models/User"); 
 
 const app = express();
 
