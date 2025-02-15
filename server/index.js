@@ -15,9 +15,9 @@ const corsOptions = {
 
 // Enable CORS
 app.use(cors(corsOptions));
-app.options('*', cors(corsOptions)); // Allow preflight requests from any route
+// app.options('*', cors(corsOptions)); // Allow preflight requests from any route
 
-// Body parsing middleware
+// // Body parsing middleware
 app.use(express.json());
 
 // Database connection
